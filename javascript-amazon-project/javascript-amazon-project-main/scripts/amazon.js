@@ -128,6 +128,17 @@ document.querySelectorAll('.js-add-to-cart').forEach( (button)=>{
     )
    }  
 
+   let cart_quantity=0;
+
+   cart.forEach((Qty)=>{
+    cart_quantity=cart_quantity+Qty.quantity;
+
+   }   
+   )
+
+   document.querySelector('.qty_monitor').innerHTML=cart_quantity;
+
+
    console.log(cart);  
     
   });  
