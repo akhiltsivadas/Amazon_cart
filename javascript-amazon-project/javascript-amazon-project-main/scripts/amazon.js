@@ -1,4 +1,5 @@
 
+
 const products=[
  {
 image: "images/products/athletic-cotton-socks-6-pairs.jpg ",
@@ -82,7 +83,7 @@ products.forEach( (product)=> {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary js-add-to-cart">
+          <button class="add-to-cart-button button-primary js-add-to-cart" data-product-name="${product.name}">
             Add to Cart
           </button>
         </div>
@@ -101,12 +102,42 @@ document.querySelector('.js-grid-products').innerHTML=productsHTML;
 
 document.querySelectorAll('.js-add-to-cart').forEach( (button)=>{
 
-  button.addEventListener('click' ,() =>{
-    console.log('Item added to cart');
-  }); 
+  button.addEventListener('click' ,() =>{   
+   
+   
+    const item =button.dataset.productName;
+   let matchinItem;
+   cart.forEach((pro)=>{
+    if(item===pro.productName)
+    {
+      matchinItem=pro;
+    }   
+
+   }) ;
+   if(matchinItem)
+   {
+
+    matchinItem.quantity++;
+   }
+   else
+   {
+    cart.push({
+      productName:item,
+      quantity:1
+    }
+    )
+   }  
+
+   console.log(cart);  
+    
+  });  
 
 
-})
+});
+
+
+
+
 
 
 
